@@ -1,0 +1,80 @@
+.ProgressBar {
+  background: var(--breadcrumbs-background);
+  min-height: var(--breadcrumbs-height);
+  display: flex;
+  align-items: center;
+  height: 10rem;
+  gap: 1rem;
+
+  .filled,
+  .rest-bar {
+    display: inline-block;
+    width: 100%;
+    height: 0.2rem;
+    background: #a3a3a3;
+    transition: 0.5s;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      transition: 1.3s;
+
+      background: #d1490c;
+    }
+  }
+  .rest-bar.active {
+    &::after {
+      width: 100%;
+    }
+  }
+  .Step {
+    display: flex;
+    align-items: center;
+
+    &-Content {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.8rem;
+      text-align: center;
+      .Step-Number {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        margin: auto;
+        display: grid;
+        place-items: center;
+        font-size: 1.8rem;
+        background: #cbcbcb;
+        border-radius: 50%;
+      }
+      .Step-Name {
+        color: #a3a3a3;
+        font-size: 1.5rem;
+        width: 20rem;
+        position: absolute;
+        bottom: -2.5rem;
+        left: -8rem;
+      }
+    }
+    &.active {
+      .Step-Number {
+        background: #d1490c;
+      }
+      .filled {
+        &::after {
+          width: 100%;
+        }
+      }
+      .Step-Number {
+        color: #fff;
+      }
+      .Step-Name {
+        color: black;
+      }
+    }
+  }
+}
